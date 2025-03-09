@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title></title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    {% include "navbar.html" %}
+
+    <form method="POST">
+      {% csrf_token %}
+      <section class="vh-100" style="background-color: #b6bde7">
+        <div class="container py-5 h-100">
+          <div
+            class="row d-flex justify-content-center align-items-center h-100"
+          >
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+              <div class="card shadow-2-strong" style="border-radius: 1rem">
+                <div class="card-body p-5 text-center">
+                  {% if messages %}
+                  <div
+                    class="alert alert-danger alert-dismissible fade show"
+                    role="alert"
+                  >
+                    {% for message in messages %}
+                    <p>{{ message }}</p>
+                    {% endfor %}
+                    <!-- Close button -->
+                    <button
+                      type="button"
+                      class="close"
+                      data-dismiss="alert"
+                      aria-label="Close"
+                    >
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  {% endif %}
+
+                  <h3 class="mb-5">Admin Login</h3>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="typeEmailX-2"
+                      >UserName</label
+                    >
+                    <input
+                      type="text"
+                      name="username1"
+                      id="typeEmailX-2"
+                      class="form-control form-control-lg"
+                      required
+                    />
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="typePasswordX-2"
+                      >Password</label
+                    >
+                    <input
+                      type="password"
+                      name="pass1"
+                      id="typePasswordX-2"
+                      class="form-control form-control-lg"
+                      required
+                    />
+                  </div>
+
+                  <button
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-primary btn-lg btn-block"
+                    type="submit"
+                  >
+                    Login
+                  </button>
+
+                  <hr class="my-4" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </form>
+
+    {% include "footer.html" %}
+  </body>
+</html>

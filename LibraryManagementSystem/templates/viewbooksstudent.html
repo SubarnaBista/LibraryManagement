@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>viewbooks</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    {% include "navbarstudent.html" %}
+    <br />
+    <br />
+    <br /><br />
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <h3 class="text-center">Available Books</h3>
+          <div class="d-flex justify-content-end"></div>
+          {% if books|length == 0 %}
+          <h2>Have 0 Books</h2>
+          {% else %}
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>S.N.</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Publication</th>
+                <th>Details</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in books %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.author }}</td>
+                <td>{{ i.publisher }}</td>
+                <td>{{ i.details }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <script src="" async defer></script>
+    {% include "footer.html" %}
+  </body>
+</html>

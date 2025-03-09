@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Add Publisher</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <style>
+      .large-input {
+        width: 100%; /* Adjust this value to control the width */
+        height: 100px; /* Adjust this value to control the height */
+      }
+    </style>
+  </head>
+  <body>
+    {% include "navadminlogged.html" %}
+    <br /><br />
+
+    <form method="POST" action="/author">
+      {% csrf_token %}
+      <section class="vh-100" style="background-color: #b6bde7">
+        <div class="container py-5 h-100">
+          <div
+            class="row d-flex justify-content-center align-items-center h-100"
+          >
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+              <div class="card shadow-2-strong" style="border-radius: 1rem">
+                <div class="card-body p-5 text-center">
+                  <h3 class="mb-5">Add Author</h3>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="typeEmailX-2">Name</label>
+                    <input
+                      type="text"
+                      name="authorname"
+                      id="authorname"
+                      class="form-control form-control-lg"
+                      required
+                    />
+                  </div>
+
+                  <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="typePasswordX-2"
+                      >Details</label
+                    >
+                    <input
+                      type="text"
+                      name="authordetails"
+                      id="authordetails"
+                      class="form-control form-control-lg large-input"
+                      required
+                    />
+                  </div>
+
+                  <button
+                    data-mdb-button-init
+                    data-mdb-ripple-init
+                    class="btn btn-primary btn-lg btn-block"
+                    type="submit"
+                  >
+                    Add
+                  </button>
+                  <hr class="my-4" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </form>
+
+    {% include "footer.html" %}
+
+    <script src="" async defer></script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>issuedbooks</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    {% include "navadminlogged.html" %}
+    <br />
+    <br />
+    <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <h3 class="text-center">Students</h3>
+            {% if details|length == 0 %}
+            <h2>No Books Issued</h2>
+            {% else %}
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>S.N.</th>
+                  <th>studentname</th>
+                  <th>bookname</th>
+                  <th>issuedate</th>
+                  <th>expirydate</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {% for i in details %}
+                <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td>{{ i.studentname }}</td>
+                  <td>{{ i.bookname }}</td>
+                  <td>{{ i.issuedate }}</td>
+                  <td>{{ i.expirydate }}</td>
+                 
+                  </td>
+                </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+  
+
+    {% include "footer.html" %}
+
+    <script src="" async defer></script>
+  </body>
+</html>

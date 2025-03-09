@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Publisher Details</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+        <!-- Bootstrap CSS -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
+    </head>
+    <body>
+       {% include "navadminlogged.html" %}
+       <br>
+       <br>
+     
+{% include "messagemodal.html" %}
+
+       
+       <div class="container">
+       
+        <div class="row">
+          <div class="col-8">
+            <h3 text align="center" >Authors</h3> 
+            <div class="d-flex justify-content-end">
+              <a href="/addauthor" class="btn btn-dark">Add Author</a>
+            </div>
+            {% if authordata|length == 0 %}
+            <h2> Have 0 Authors</h2>
+            {% else %}
+            
+            
+            <table class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>S.N.</th>
+                  <th>Name</th>
+                  <th>Details</th>
+                  <th>Action</th>
+                  
+                </tr>
+              </thead>
+        <tbody>
+          
+            {% for i in authordata %}
+            <tr>
+            <td>{{forloop.counter}}</td>
+            <td>{{i.name}}</td>
+            <td>{{i.details}}</td>
+            <td><a href="{% url 'confirmdelete' model='author' id=i.id %}" class="text-danger">
+                <i class="fas fa-trash-alt"></i> </td>
+            
+  
+            </tr>
+            {% endfor %}
+            
+        
+        </tbody>
+
+    
+    </table>
+    {% endif %}
+</div>
+</div>
+</div>
+
+
+        
+        <script src="" async defer></script>
+        {% include "footer.html" %}
+    </body>
+</html>

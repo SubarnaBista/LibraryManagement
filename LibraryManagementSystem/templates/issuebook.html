@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>issuebook</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    {% include "navadminlogged.html" %}
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div class="signup-form">
+      <form method="post" class="form-horizontal">
+        <center><h2>ISSUE BOOK TO STUDENT</h2></center>
+
+        {% csrf_token %}
+        <div class="form-outline mb-4">
+          <label class="form-label" for="author">Books</label>
+          <select
+            name="book"
+            id="book"
+            class="form-control form-control-lg large-input"
+            required
+          >
+            <option value="">Select Books</option>
+            {% for i in bookdetail %}
+            <option value="{{ i.id }}">{{ i.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-outline mb-4">
+          <label class="form-label" for="author">Students</label>
+          <select
+            name="issuedstudentname"
+            id="issuedstudentname"
+            class="form-control form-control-lg large-input"
+            required
+          >
+            <option value="">Select Students</option>
+            {% for j in studentdetails %}
+            <option value="{{ j.id }}">{{ j.get_name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-8 col-xs-offset-4">
+            <button type="submit" class="btn btn-primary btn-lg">ISSUE</button>
+          </div>
+        </div>
+      </form>
+      <div class="text-center">
+        View Issued Book to Student <a href="viewissuedbook">Click here</a>
+      </div>
+    </div>  
+</body>
+    {% include "footer.html" %}
+  </body>
+</html>

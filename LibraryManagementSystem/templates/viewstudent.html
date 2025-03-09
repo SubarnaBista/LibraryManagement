@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Students View</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="" />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.5.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+  <body>
+    {% include "navadminlogged.html" %}
+    <br />
+    <br />
+    {% include "messagemodal.html" %}
+
+    <div class="container">
+      <div class="row">
+        <div class="col-8">
+          <h3 class="text-center">Students</h3>
+          {% if students|length == 0 %}
+          <h2>No students Registered</h2>
+          {% else %}
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>S.N.</th>
+                <th>NAme</th>
+                <th>Section</th>
+                <th>Enrollment</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for i in students %}
+              <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ i.get_name }}</td>
+                <td>{{ i.section }}</td>
+                <td>{{ i.enrollment }}</td>
+               
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <script src="" async defer></script>
+    {% include "footer.html" %}
+  </body>
+</html>

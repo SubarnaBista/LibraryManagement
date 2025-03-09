@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Confirm Deletion</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    {% include "navadminlogged.html" %}
+    <br />
+    <br />
+    <br />
+
+    <div class="container">
+      <h3>
+        Are you sure you want to delete the {{model_name}}
+        <strong>{{ instance.name }}</strong>
+        {% if model_name == 'Publisher' %}
+        <p>
+          It will delete all the books with Publisher
+          <strong style="color: red">{{instance.name}}</strong>
+        </p>
+        {% elif model_name == 'Author' %}
+        <p>
+          It will delete all the books with Author
+          <strong style="color: red">{{instance.name}}</strong>
+        </p>
+
+        {% endif %}
+      </h3>
+
+      <p>This action cannot be undone.</p>
+
+      <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Yes, Delete</button>
+        <a
+          href="{% if model_name == 'Book' %}{% url 'bookview' %}{% elif model_name == 'Author' %}{% url 'author' %}{% elif model_name == 'Publisher' %}{% url 'publisher' %}{% endif %}"
+          class="btn btn-secondary"
+          >Cancel</a
+        >
+      </form>
+    </div>
+
+    {% include "footer.html" %}
+  </body>
+</html>
